@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Grade Calculator</title>
+
+		<!-- REQUIRED META TAGS -->
+		<meta charset="utf-8">
+		
+		<!--MAKE IT LOOK RESPONSIVES FOR ALL DEVICES-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!--	  ADDING STYLESHEET.CSS TO MAIN PAGE-->
+		<link rel ="stylesheet" href="stylesheet.css">
+
+		<!-- NAVIGATION BAR -->
+		<nav class="navigation blackbar">
+			<a href="http://www.prism.gatech.edu/~tnguyen452/" class="button bar-item">Home</a>
+			<a href="https://cs1371.gatech.edu/" class="button bar-item">1371</a>
+			<a href="https://www.dropbox.com/sh/owyrs1gflhv24l8/AAAFuwKL4E5HRO2a8B-wqGeLa?dl=0" class="button bar-item">Lectures</a>
+			<a href="#calculatePart"class="button bar-item">Calculation</a>
+		</nav>
+
+		<!-- ADDING THE SLIDE SHOW ON THE WEBSITE -->
+		<section>
+			<img class = "slider" src = "Pictures/left-tower-linkedin.jpg" style = "width: 100%">
+			<img class = "slider" src = "Pictures/tower-linkedin.jpg" style = "width: 100%">
+			<img class = "slider" src = "Pictures/swimming-linkedin.jpg" style = "width: 100%">
+			<img class = "slider" src = "Pictures/wreck_linkedin.jpg" style = "width: 100%">
+			<img class = "slider" src = "Pictures/left-bling_linkedin.jpg" style = "width: 100%">
+		</section>
+
+		<!-- ADDING SCRIPT FOR SLIDE SHOW FOR THE SLIDE SHOW ABOVE -->
+		<script>
+			var index = 0;
+			slideShow();
+			function slideShow() {
+				var i ;
+				var x = document.getElementsByClassName("slider");
+				for (i = 0; i < x.length; i++) {
+					x[i].style.display = "none";
+				}
+				index++;
+				if (index > x.length) {index = 1}
+					x[index-1].style.display = "block";
+				setTimeout(slideShow, 5000); //KEEP CHANGING BANNER AFTER 5 SECS
+			}
+		</script>
+	</head>
+
+	<!-- ADDING THE TIME TO THE WEBSITE! -->
+	<body onload='startTime()'>
+		
+		<div class="wrap">
+
+			<!--MAIN BODY-->
+			<section id="main">
+
+				<!-- CREATE THE INTRODUCTION WORD -->
+				<section id="calculatePart" class="Intro makeCenter content" style="max-width: 600px">
+					<h2 class ="wordWide" style="color: yellow; font-size: 35px; text-shadow: 3px 2px red;">THE WRECK - GT</h2>
+					<p class ="opacity" style="color: white"><i>Thinh Nguyen</i></p>
+
+					<!-- Location of the time -->
+					<p id="time"> Time: </p>
+				</section>
+
+				<!--CREATE THE TIME WATCH  -->
+				<script>
+					function startTime() {
+						var today = new Date();
+						var h = today.getHours();
+						var m = today.getMinutes();
+						var s = today.getSeconds();
+						var time = 'Time: '
+
+						// ADD EXTRA 0 TO THE CLOCK
+						h = checkTimes(h);
+						m = checkTimes(m);
+						s = checkTimes(s);
+						document.getElementById('time').innerHTML = time + h + ":" + m + ":" + s;
+						var t = setTimeout(startTime, 500);
+					}
+
+					// FUNCTION RUN TO ADD EXTRA 0 TO THE CLOCK
+					function checkTimes(i) {
+						if (i < 10) {i = "0" +i}
+							return i;
+					}
+				</script>
+
+				<!--  ADDING COLUMN TO THE SITE!-->
+				<!--  FIRST INTILIZE THE ROW FOR THE COLUMN-->
+				<div class ="Row">
+					<!--The First Col-->
+					<div class = "Column left" style="background-color: #34495e">
+						<h1 class="firstColText " style="color:yellow; font-size: 35px;"> About me!</h1>
+						
+						<section>
+							<!-- MAKE THE IMAGE BECOME ROUND  -->
+							<img class = "makePicCircle" src = "Pictures/Thinh1.jpeg" style = " width: 150px">
+							
+							<!-- CREATE A TYPE WRITER -->
+							<div class="wrapper">
+								<button id="myselfButton" onclick="typeWriter()" value="PLAY">My story!</button>
+								
+								<!-- ADD THE SOUND WHEN CLICK THE BUTTON -->
+							<audio id="audio" src="R-Wreck-vocal.mp3" ></audio>
+							<p id="controlType"></p>
+							<script>
+								var ii = 0;
+								var txt = 'My name is Thinh Nguyen. I am from Viet Nam; i just moved to United States for about five years. I am currently sophomore at Georgia Tech. I switched my major from Computer Engineering to Computer Science. I like to learn and explore the new thing around the world and to apply it into my life. My favorite quote is "Never Give Up". - Go Jacket!!!';
+								var speed = 50;
+								var audio = document.getElementById("audio");
+								function typeWriter() {
+									audio.play();
+									if (ii < txt.length) {
+										document.getElementById("controlType").innerHTML += txt.charAt(ii);
+										ii++;
+										setTimeout(typeWriter,speed);
+									}
+								}
+							</script>
+						</section>
+					</div>
+				</div>
+				
+				<!--THE SECOND COL-->
+				<div class = "Column middle" style="background-color: yellow">
+					<h1 class="secondColText">Grade Calculator For <select id="scroll_option">
+
+						<!-- CREATE A SCROLL LIST TO CHOOSE CASE INTERFACE APIS -->
+						<option value="CS1371">CS1371</option>
+						<option value="AE1350">AE1350</option>
+						<option value="AE1601">AE1601</option>
+						<option value="AE1770">AE1770</option>
+						<option value="CHEM1211">CHEM1211</option>
+						<option value="CHEM1212">CHEM1212</option>
+						<option value="CHEM1315">CHEM1315</option>
+						<option value="CHEM2311">CHEM2311</option>
+						<option value="ECON1101">ECON1101</option>
+						<option value="ECON2100">ECON2100</option>
+						<option value="ECON2101">ECON2101</option>
+						<option value="ENGL1101">ENGL1101</option>
+						<option value="ENGL1102">ENGL1102</option>
+						<option value="MATH1111">MATH1111</option>
+						<option value="MATH1113">MATH1113</option>
+						<option value="MATH1501">MATH1501</option>
+						<option value="MATH1502">MATH1502</option>
+						<option value="PHYS2211">PHYS2211</option>
+						<option value="PHYS2212">PHYS2212</option>
+						<option value="PHYS2213">PHYS2213</option>
+						<option value="PHIL2010">PHIL2010</option>
+						<option value="PHIL2025">PHIL2025</option>
+						<option value="PSYC2020">PSYC2020</option>
+						<option value="PSYC2103">PSYC2103</option>
+						<option value="NRE2110">NRE2110</option>
+						<option value="NRE2698">NRE2698</option>
+						<option value="CS1331">CS1331</option>
+						<option value="CS1332">CS1332</option>
+						<option value="ECE1010">ECE1010</option>
+						<option value="ECE2020">ECE2020</option>
+						<option value="ECE2026">ECE2026</option>
+
+						<!-- CREATE THE SET BUTTON -->
+					</select> <button id="goButton" onclick="setAPIs()">Set!</button></h1>
+
+					<!-- CONTROL THE APIS, GETTING DATA FROM USER AND PASS THE WEIGHT INTO THE INPUTS BOX -->
+					<script>
+						function setAPIs() {
+							
+							var setName = "?class=";
+							var classChoose = document.getElementById("scroll_option").value;
+							var params = setName + classChoose;
+							var url = 'http://cs1371.gatech.edu/getClassInfo/' + params;
+
+							// SEND A REQUEST TO THE SERVER, AND GET THE REPONSETEXT
+						var xmlHttp = new XMLHttpRequest();
+						xmlHttp.open("GET", url, false); // FALSE FOR SYNCHRONOUS REQUEST
+						xmlHttp.send();
+						var data =  JSON.parse(xmlHttp.responseText); // PARSE CAUSE CONVERT THE STRING FROM THE RESPONETEXT TO OBJECT ARRAY
+
+							// PASSING THE DATA GET FROM APIS TO THE INPUT FORM
+							document.getElementById('homework%').value = data.homework;
+							document.getElementById('quiz%').value = data.quiz;
+							document.getElementById('test%').value = data.test;
+							document.getElementById('participation%').value = data.class_participation;
+							document.getElementById('finalexam%').value = data.final_exam;
+						}
+					</script>
+
+					<!-- INTRODUCE OF HOW CALCULATOR WORK -->
+					<p style="font-family: courier; color: red; font-size: 16px;"> ** This calculator will helps you to figure out what score you need on the final to achieve a certain score in a class. We also can type in a list of number seperate by comma in SCORE column.**</p>
+					<div class = "Column left centerAlign">
+						<div class="firstRolText" style="color: black">CATEGORIES</div>
+						<div class="borderLine"> </div>
+						<div class="makelargerSpacing">
+							<p>Homeworks</p>
+							<p>Quiz</p>
+							<p>Tests</p>
+							<p>Extra Credits</p>
+							<p>Participation</p>
+							<p>Final Exam</p>
+							<p>Desire Grade</p>
+						</div>
+					</div>
+					
+					<!-- THE MIDDLE COLUMN -->
+					<div class = "Column middleCol centerAlign">
+						<div class="secondRolText" style="color: black;">PERCENTAGES(%)</div>
+						<div class="borderLine"> </div>
+						
+						<!-- CREATE THE INPUT FORM FOR THE PERCENTAGES -->
+						<p><input style="text-align: center;" type="number" id="homework%" size="2" value=""></p>
+						<p><input style="text-align: center;" type="number" id="quiz%" size="2" value=""></p>
+						<p><input style="text-align: center;" type="number" id="test%" size="2" value=""></p>
+						<p><input style="text-align: center;" type="text" id="extracredit%" value="Put score next column!" disabled="disabled"></p>
+						<p><input style="text-align: center;" type="number" id="participation%" size="2" value=""></p>
+						<p><input style="text-align: center;" type="number" id="finalexam%" size="2" value=""></p>
+						<p><input style="text-align: center;" type="text" id="desire" value="Put score next column!" disabled="disabled"></p>
+
+						<!-- CREATE AN BUTTON TO CLICK WITH THE FUNCTION ATTACH -->
+						<button id="calculateButton" onclick="calculate()">Calculate</button>
+						<!-- Output statement location -->
+						<p id="calculateOutput" style="color: red; font-family: courier; font-size: 14.6px;"></p>
+
+						<!-- CONTROL THE CALCULATOR FUNCTION -->
+						<script>
+							function calculate() {
+								// HW GRADE AVE
+								var homeworkgrade = document.getElementById('homework').value.split(",");
+								var homeworkAve = 0;
+								getHWLength = homeworkgrade.length;
+								for (a = 0; a < getHWLength; a++) {
+									homeworkAve += parseFloat(homeworkgrade[a]);
+								}
+									getHWAver = (homeworkAve / getHWLength);
+								// HW PERCENT
+								var homeworkprecent = parseFloat(document.getElementById('homework%').value/100);
+
+								// CHECK PERCENT VALUE
+								console.log('HW%: '+homeworkprecent);
+
+								// QUIZ GRADE AVE
+								var quizgrade = document.getElementById('quiz').value.split(",");
+								var quizAve = 0;
+								getQuizLength = quizgrade.length;
+								for (s = 0; s < getQuizLength; s++) {
+									quizAve += parseFloat(quizgrade[s]);
+								}
+									getQuizAver = (quizAve / getQuizLength);
+									// QUIZ PERCENT
+								var quizpercent = parseFloat(document.getElementById('quiz%').value/100);
+								console.log('Quiz%: '+quizpercent);
+								
+								// Get test ave
+								var testgrade = document.getElementById('test').value.split(",");
+								var TestAve = 0;
+								getTestLength = testgrade.length;
+								for (d = 0; d < getQuizLength; d++) {
+									TestAve += parseFloat(testgrade[d]);
+								}
+									getTestAver = (TestAve / getTestLength);
+								// TEST PERCENT
+								var testpercent = parseFloat(document.getElementById('test%').value/100);
+								console.log('Test%: '+testpercent);
+								// GET PARTICIPATION AVE
+								var participationgrade = document.getElementById('participation').value.split(",");
+								var particiAve = 0;
+								getParLength = participationgrade.length;
+								for (f = 0; f < getParLength; f++) {
+									particiAve += parseFloat(participationgrade[f]);
+								}
+									getParAver = (particiAve / getParLength);
+								// PARTICIPATION PERCENT
+								var participatepercent = parseFloat(document.getElementById('participation%').value/100);
+								console.log('Par%: '+participatepercent);
+								// GET THE FINAL PERCENT WEIGHT
+								var finalpercent = parseFloat(document.getElementById('finalexam%').value/100);
+								console.log('Final%: '+finalpercent);
+								// GET EXTRA CREDIT GRADE
+								var extragrade = document.getElementById('extracredit').value.split(",");
+								var extraAve = 0;
+								getExtraLength = extragrade.length;
+								for (g = 0; g < getExtraLength; g ++) {
+									extraAve += parseFloat(extragrade[g]);
+								}
+									getExtraAve = Number(extraAve / getExtraLength);
+								//GET DESIRE GRADE
+								var desiregrade = Number(document.getElementById('desireGrade').value);
+								// CALCULATE THE TOTAL OF THE HOMEWORKS
+								var totalHW = Number(getHWAver) * homeworkprecent;
+								// CALCULATE THE QUIZ GRADE
+								var totalQuiz = Number(getQuizAver) * quizpercent;
+								// CALCULATE THE TEST GRADE
+								var totalTest = Number(getTestAver) * testpercent;
+								// CALCULATE THE PARTICIPATION GRADE
+								var totalPar = Number(getParAver) * participatepercent;
+								// GET THE RESULT
+								var yourTotal = totalHW + totalQuiz + totalTest + totalPar + getExtraAve; // TOTAL SCORE WE MADE
+								var newTotal = yourTotal.toFixed(3);
+								console.log('YourTotal: ' + newTotal);
+								var percentTotal = homeworkprecent + quizpercent + testpercent + participatepercent +
+								finalpercent; // TOTAL PERCENT, MUST EQUAL TO 1.0
+								var percentTotal = (percentTotal * 100);
+								// CHECK TOTAL PERCENT
+								console.log('TotalPercent: ' + Math.round(percentTotal));
+								var score_needed = (desiregrade - yourTotal) / (finalpercent);
+								var new_Score_needed = score_needed.toFixed(2);
+
+								// ASK FOR THE NAME OF USER
+								// var txt;
+								// var person = prompt("Please enter your name:", "Thinh Nguyen");
+								// Check the condition if the total of percent greater than 100 then 'ERROR'
+
+								if (Math.round(percentTotal) > 100) {
+									document.getElementById('calculateOutput').innerHTML='Please recheck your percentages, your TOTAL PERCENTAGE right now are HIGHER than 100%';
+									alert('PLEASE RECHECK THE PERCENTAGE, TOTAL PERCENTAGE RIGHT NOW ARE HIGHER THAN 100%');
+
+									// Otherwise it will print out and do all the calculation
+								} else if (Math.round(percentTotal) <= 100) {
+
+									// This will ask for name of user
+
+									// if (person == null || person == "") {
+										// document.getElementById('calculateOutput').innerHTML = "User cancelled the prompt. Please type your name in the input.";
+									// }
+									// else {
+								// document.getElementById('calculateOutput').innerHTML ='Hi ' + person + ' your scores now is:' + newTotal + '. You need to get AT LEAST: ' + new_Score_needed + ' to get to your desire grade' +'(' + desiregrade +').';
+
+								document.getElementById('calculateOutput').innerHTML ='Hi User' + ' your scores now is:' + newTotal + '. You need to get AT LEAST: ' + new_Score_needed + ' to get to your desire grade' +'(' + desiregrade +').';
+								}
+							}
+						</script>
+					</div>
+
+					<!-- THE THIRD SMALL COLUMN INSIDE THE BIG SECOND COL -->
+					<div class = "Column right centerAlign">
+						<div class="thirdRolText" style="color: black">SCORES</div>
+						<div class="borderLine"> </div>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="text" id="homework" value="0"></p>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="text" id="quiz" value="0"></p>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="text" id="test" value="0"></p>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="text" id="extracredit" value="0,0"></p>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="text" id="participation" value="0"></p>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="text" id="finalexam" value="No need score!" disabled="disabled"></p>
+						<!-- CREATE AN INPUT BOX TO PASS IN THE INPUT -->
+						<p><input style="text-align: center;" type="number" id="desireGrade" size="2" value="0"></p>
+					</div>
+				</div>
+
+				<!--THE THIRD BIG COL-->
+				<div class = "Column right" style = "background-color: #34495e">
+					<h1 class="thirdColText" style=" font-size: 35px; color: yellow; text-align: center;"> CS 1371</h1>
+					<div>
+					<p1 style="font-family: courier; font-size: 20px;"> Professors: Kantwon Roger, Smith David </p1>
+					<p style="font-family: courier; font-size: 20px; "> Class Syllabus: <a href="https://t-square.gatech.edu/portal/site/gtc-706b-0a04-55f4-82cb-6d0e6974388f/page/8670a911-caa0-4cbe-ad50-4c5c441d617c">See Syllabus</a></p>
+					<p style="font-family: courier; font-size: 20px;"> Class Schedule: <a href="https://t-square.gatech.edu/portal/site/gtc-706b-0a04-55f4-82cb-6d0e6974388f/page/396d8d5e-a877-4b84-b64c-313e4ea40665">See Schedule</a> </p>
+					<p style="font-family: courier; font-size: 20px; color: red;"> Tip to success:
+						<ul>
+							<li id="tip">Come to class and reciation</li>
+							<li id="tip">Do homeworks and review the lectures</li>
+							<li id="tip">Work individually, ask TA when need help</li>
+							<li id="tip">Think different way to solve the problem like a programmer</li>
+						</ul>
+					</p>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<footer class="footer">
+	@2017 - Created by Thinh Nguyen
+</footer>
+
+</body>
+</html>
